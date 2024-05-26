@@ -10,6 +10,7 @@ class PageController extends Controller
 {   
     public function index(): View{
         if (Auth::check()) {
+            
         return view("page.index");
     }
 }

@@ -11,7 +11,16 @@
 		<link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-		
+	@if (session('AC'))
+    <div class="alert alert-warning">
+        {{ session('AC') }}
+    </div>
+	@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+	@endif
+	@endif
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" class="active">
 				<div class="custom-menu">
@@ -38,7 +47,21 @@
 	          <li>
               <a href="#"><span class="fa fa-paper-plane mr-3"></span> Contact</a>
 	          </li>
+			  @guest
+			  <li>
+				<a href="{{ route('login') }}"><span class="fa fa-user mr-3"></span>Login</a>
+			</li>
+			<li>
+				<a href="{{ route('register') }}"><span class="fa fa-user mr-3"></span>Register</a>
+			</li>
+			  @endguest
+			  @auth
+			  <li>
+				<a href="{{ route('logout') }}"><span class="fa fa-user mr-3"></span>Logout</a>
+			</li>
+			@endauth
 	        </ul>
+
 
 	        <div class="mb-5">
 						<h3 class="h6 mb-3">Subscribe for newsletter</h3>
@@ -61,7 +84,7 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Sidebar #03</h2>
+        <h2 class="mb-4"></h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>

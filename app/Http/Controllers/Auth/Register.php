@@ -14,7 +14,7 @@ class Register extends Controller
     public function register()
     {
         if (Auth::check()) {
-            return redirect()->route('index');
+            return redirect()->route('index')->with('AC', 'Please log out to make another account.');
         }
 
         return view("auth.register");

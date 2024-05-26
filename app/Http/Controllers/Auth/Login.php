@@ -11,7 +11,7 @@ class Login extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect()->route('index');
+            return redirect()->route('index')->with('AC', 'Please log out to create another account.');
         }
 
         return view("auth.login");
@@ -28,7 +28,7 @@ class Login extends Controller
         // Attempt to authenticate the user
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('index')->withSuccess('You have successfully logged in!');
+            return redirect()->route('index')->withSuccess( 'You have successfully logged in!');
         }
 
         // Redirect back with error if authentication fails
