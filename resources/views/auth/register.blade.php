@@ -1,10 +1,9 @@
-  
- @extends('template.auth')
- @include('link.auth')
- @section('content')
- 
- <!-- Sign up form -->
- <section class="signup">
+@extends('template.auth')
+@include('link.auth')
+@section('content')
+
+<!-- Sign up form -->
+<section class="signup">
     <div class="container">
         <div class="signup-content">
             <div class="signup-form">
@@ -15,26 +14,26 @@
                         <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         <input type="text" name="name" placeholder="Your Name" class="form-control rounded-left @error('name') is-invalid @enderror" value="{{ old('name') }}"/>
                         @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                            @endif
+                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="email"><i class="zmdi zmdi-email"></i></label>
                         <input type="email" name="email" placeholder="Your Email" class="form-control rounded-left @error('email') is-invalid @enderror" value="{{ old('email') }}"/>
                         @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                            @endif
+                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                         <input type="password" name="password" placeholder="Password" class="form-control rounded-left @error('password') is-invalid @enderror" value="{{ old('password') }}"/>
                         @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                            @endif
+                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                        @endif
                     </div>
                     <div class="form-group">
-                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                        <input type="password" name="re_password" placeholder="Repeat your password"/>
+                        <label for="password_confirmation"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="password" name="password_confirmation" placeholder="Repeat your password" class="form-control rounded-left @error('password_confirmation') is-invalid @enderror" value="{{ old('password_confirmation') }}"/>
                     </div>
                    
                     <div class="form-group">
@@ -47,8 +46,8 @@
                 </form>
             </div>
             <div class="signup-image">
-                <figure><img src="auth/images/signup-image.jpg" alt="sing up image"></figure>
-                <a href="/login" class="signup-image-link">I am already member</a>
+                <figure><img src="auth/images/signup-image.jpg" alt="sign up image"></figure>
+                <a href="/login" class="signup-image-link">I am already a member</a>
             </div>
         </div>
     </div>
