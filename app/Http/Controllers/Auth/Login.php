@@ -3,14 +3,20 @@
 namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+// use Illuminate\View\View;
 use Illuminate\Http\Request;
 
 class Login extends Controller
 {
-    public function login(): View{
+    public function login()
+    {
+        if (Auth::check()) {
+            return redirect()->route('index');
+        }
+
         return view("auth.login");
     }
+
     public function authenticate(Request $request)
     {
         // Validate the request

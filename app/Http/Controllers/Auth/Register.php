@@ -5,17 +5,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\View\View;
+// use Illuminate\View\View;
+// use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class Register extends Controller
 {
-    public function register(): View{
+    public function register()
+    {
+        if (Auth::check()) {
+            return redirect()->route('index');
+        }
+
         return view("auth.register");
     }
 
     public function store(Request $request)
-{
+    {
     // Validate the request
     $request->validate([
         'name' => 'required|string|max:250',
